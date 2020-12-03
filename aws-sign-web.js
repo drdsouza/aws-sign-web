@@ -145,7 +145,8 @@
                 // Canonical Query String:
             flatten(Object.keys(ws.uri.queryParams).sort().map(function (key) {
                 return ws.uri.queryParams[key].sort().map(function(val) {
-                    return encodeURIComponent(key) + '=' + encodeURIComponent(val);
+                    // Query-param values must be percent-encoded for signing.
+                    return encodeURIComponent(key) + '=' + uriEncode(val);
                 })
             })).join('&') + '\n' +
                 // Canonical Headers:
