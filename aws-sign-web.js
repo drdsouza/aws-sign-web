@@ -248,7 +248,7 @@
 
         function extractQueryParams(search) {
             return /^\??(.*)$/.exec(search)[1].split('&').reduce(function (result, arg) {
-                arg = /^(.+)=(.*)$/.exec(arg);
+                arg = /^(.+?)=(.*)$/.exec(arg);
                 if (arg) {
                     var paramKey = decodeURI(arg[1]);
                     result[paramKey] = (
